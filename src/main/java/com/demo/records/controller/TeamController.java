@@ -34,6 +34,7 @@ public class TeamController {
     @ResponseBody
     @RequestMapping("/joinedTeamList")
     public Result joinedTeamList(){
+        // 测试是否好使了
         String email = userController.getLoginUser();
 //        log.info("/team/joinedTeamList:user="+email);
         Result res = new Result();
