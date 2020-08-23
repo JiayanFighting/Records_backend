@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/records?useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: microsoft123
+#    password: 123456
+mybatis:
+  type-aliases-package: com.example.demo.dao
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+
+
