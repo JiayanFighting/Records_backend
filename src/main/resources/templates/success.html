@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>oauth github</title>
+</head>
+<body>
+<h>Success</h>
+<!--/*@thymesVar id="email" type="email"*/-->
+<!--For development only, comment out these part for security-->
+<!--<h1 th:text="${email}"></h1>-->
+
+logged in...
+
+<script th:inline="javascript">
+    window.onload = function () {
+        let res = [[${res}]];
+        // window.opener.postMessage("bearer {{ $token }}", "{{ $domain }}");
+        
+        // window.opener.postMessage(res, "https://weekly.omsz.io/signin");
+        window.opener.postMessage(res, "https://localhost:3000/signin");
+        // document.write(res);
+        window.close();
+    }
+</script>
+</body>
+</html>
