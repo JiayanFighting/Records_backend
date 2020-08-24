@@ -113,7 +113,7 @@ public class NoteController {
 
     @ResponseBody
     @PostMapping("/update")
-    public Result updateReport(@RequestBody NoteDO note){
+    public Result updateNote(@RequestBody NoteDO note){
         if (noteService.update(note) > 0){
             noteService.saveDraft(note);
             return Result.ok();
