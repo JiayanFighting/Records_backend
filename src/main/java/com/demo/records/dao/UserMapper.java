@@ -17,6 +17,10 @@ public interface UserMapper{
     @Select("SELECT * FROM "+tableName+" Where email = #{email} and password = #{password}")
     UserDO login(@Param("email") String email, @Param("password") String password);
 
+    @Update("update "+tableName+" set `avatar` = #{avatar}  where `id`=#{userId}")
+    int updateUserAvatar(@Param("userId") int userId, @Param("avatar") String avatar);
+
+
     @Insert("INSERT INTO users (email,username) VALUES (#{email},#{username}) ON DUPLICATE KEY UPDATE status_code= "+UserDO.USER_STATUS_NORMAL +"  and type = "+UserDO.USER_TYPE_NORMAL)
     int saveUser(UserDO user);
 

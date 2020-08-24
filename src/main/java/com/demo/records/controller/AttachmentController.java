@@ -72,12 +72,13 @@ public class AttachmentController {
 
     @ResponseBody
     @PostMapping("/photo/upload/avatar")
-    public Result uploadAvatar(@RequestParam("photo") MultipartFile photo) throws IOException {
+    public Result uploadAvatar(@RequestParam("photo") MultipartFile photo,@RequestParam("userId") int userId) throws IOException {
         String root = PHOTO_STORE_URL;
 //        String root = PhotoStore.PHOTO_STORE_URL;
         String avatarName = String.valueOf(System.currentTimeMillis())+new Random().nextInt(9)+".jpg";
-        String userEmail = getLoginUser();
-        String fileDic = root+"avatars/"+userEmail;
+//        String userEmail = getLoginUser();
+        String fileDic = root+userId+"/avatars/";
+        System.out.println(fileDic);
         File userDir = new File(fileDic);
         if (!userDir.exists() && !userDir.mkdirs()) {
             return Result.error();
@@ -85,8 +86,9 @@ public class AttachmentController {
         try {
             File savedFile = new File(fileDic,avatarName);
             photo.transferTo(savedFile);
-            String savePath = "/avatars/"+userEmail + "/" + avatarName;
-            if (userService.updateAvatar(userEmail,savePath) > 0) {
+            String savePath = "/"+userId+"/avatars/"+ avatarName;
+            System.out.println(savePath);
+            if (userService.updateUserAvatar(userId,savePath) > 0) {
                 Result res = new Result();
                 res.put("url",savePath);
                 return res;

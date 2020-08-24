@@ -8,6 +8,9 @@ public interface UserService {
 
     public static final String[] SUPER_ADMIN = {"jiayan.huang@dchdc.net"};
 
+    int updateUserAvatar(int userId, String avatar);
+
+
     List<UserDO> search(String content);
 
     UserDO findByEmail(String email);

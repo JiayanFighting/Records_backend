@@ -14,6 +14,11 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
+    public int updateUserAvatar(int userId, String avatar) {
+        return userMapper.updateUserAvatar(userId,avatar);
+    }
+
+    @Override
     public List<UserDO> search(String content) {
         return userMapper.search(content);
     }
