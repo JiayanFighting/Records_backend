@@ -37,8 +37,8 @@ public interface NoteMapper {
     List<NoteDO> list(Map<String, Object> map);
 
     @Options(useGeneratedKeys=true, keyProperty = "id", keyColumn = "id")
-    @Insert("INSERT INTO notes (`user_id`, `type`, `tags`,`title`, `content`)"
-            + "values (#{userId}, #{type}, #{tags}, #{title},#{content})")
+    @Insert("INSERT INTO notes (`user_id`,`directory`, `type`, `tags`,`title`, `content`,`cover`,`thumbUp`,`star`)"
+            + "values (#{userId},#{directory}, #{type}, #{tags}, #{title},#{content},#{cover},#{thumbUp},#{star})")
     int save(NoteDO note);
 
     @Update("update "+tableName +"set `status` = "+statusDeleted+" ")

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,6 +27,8 @@ import java.util.Random;
 @CrossOrigin
 @RestController
 public class AttachmentController {
+
+    public static final String PHOTO_STORE_URL = "/root/ProjectFiles/Records/photos/";
 
     @Autowired
     private HttpServletRequest httpServletRequest;
@@ -39,36 +43,38 @@ public class AttachmentController {
     //form data
     @ResponseBody
     @PostMapping("/photo/upload")
-    public Result upload(@RequestParam("photo") MultipartFile photo, @RequestParam("teamId") int teamId) throws IOException {
-//        System.out.println("save a photo");
-        String root = PhotoStore.PHOTO_STORE_URL;
+    public Result upload(@RequestParam("photo") MultipartFile photo, @RequestParam("userId") int userId) throws IOException {
+        System.out.println("save a photo");
+//        String root = PhotoStore.PHOTO_STORE_URL;
+        String root = PHOTO_STORE_URL;
 //        System.out.println("current root: "+root);
         String originalFilename = photo.getOriginalFilename();
         assert originalFilename != null;
         String uuidFilename = UploadUtils.getUUIDName(originalFilename);
-        String userEmail = getLoginUser();
-        File userDir = new File(root+teamId+"/"+userEmail);
+//        String userEmail = getLoginUser();
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        File userDir = new File(root+userId+"/"+date);
         if (!userDir.exists()) {
             if (!userDir.mkdirs()){
                 return Result.error();
             }
         }
 
-        File savedFile = new File(root+teamId+"/"+userEmail,uuidFilename);
+        File savedFile = new File(root+userId+"/"+date,uuidFilename);
         photo.transferTo(savedFile);
-        String savePath = root+teamId+"/"+userEmail + "/" + uuidFilename;
+        String savePath = root+userId+"/"+date + "/" + uuidFilename;
 
-        photoService.save(savePath,userEmail,teamId);
+        photoService.save(savePath,date,userId);
         Result res = new Result();
-        res.put("url","/"+teamId+"/"+userEmail + "/" + uuidFilename);
-        res.put("message","success");
+        res.put("url","/"+userId+"/"+date + "/" + uuidFilename);
         return res;
     }
 
     @ResponseBody
     @PostMapping("/photo/upload/avatar")
     public Result uploadAvatar(@RequestParam("photo") MultipartFile photo) throws IOException {
-        String root = PhotoStore.PHOTO_STORE_URL;
+        String root = PHOTO_STORE_URL;
+//        String root = PhotoStore.PHOTO_STORE_URL;
         String avatarName = String.valueOf(System.currentTimeMillis())+new Random().nextInt(9)+".jpg";
         String userEmail = getLoginUser();
         String fileDic = root+"avatars/"+userEmail;

@@ -49,6 +49,8 @@ public class LoginController {
             if (userDO == null || userDO.getType() <= 0 || userDO.getStatusCode() == UserDO.USER_STATUS_DELETED) {
                 throw new Exception("Your account has no permissions, please contact the administrator");
             }else {
+
+                System.out.println(userDO.toString());
                 Result res = new Result();
                 res.put("userId",userDO.getId());
                 res.put("username",userDO.getUsername());
