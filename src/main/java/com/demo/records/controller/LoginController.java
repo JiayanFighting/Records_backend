@@ -61,9 +61,7 @@ public class LoginController {
             }
         }catch (Exception e){
             this.logout();
-            ModelAndView mv = new ModelAndView("error");
-            System.out.println("/login/secure/aad Exception");
-            mv.addObject("error",e.getMessage());
+            System.out.println(e.getMessage());
             return Result.error("no user");
         }
     }

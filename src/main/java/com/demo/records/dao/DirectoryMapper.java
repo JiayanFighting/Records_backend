@@ -52,7 +52,7 @@ public interface DirectoryMapper {
             "</where>" +
             " order by create_time desc " +
             "</script>")
-    @ResultMap("teamMap")
+    @ResultMap("directoryMap")
     List<DirectoryDO> findDirectory(DirectoryDO directory);
 
 
