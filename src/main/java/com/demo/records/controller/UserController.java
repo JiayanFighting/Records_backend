@@ -28,6 +28,7 @@ import java.util.UUID;
 @Slf4j
 @CrossOrigin
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -42,6 +43,18 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @ResponseBody
+    @RequestMapping("/visitInfo")
+    public Result getUserInfoForVisit(String email) {
+        UserDO userDO = userService.findByEmail(email);
+        if (false){
+            return Result.error("用户没有开放主页！");
+        }
+        Result res =new Result();
+        System.out.println(userDO.toString());
+        res.put("user",userDO);
+        return res;
+    }
 //    /**
 //     * handle login, but should use securePage instead
 //     */

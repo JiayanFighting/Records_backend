@@ -18,6 +18,7 @@ public class UserDO {
     //primary key
     private String id;
     private String email;
+    private String password;
     private String username;
     private String avatar;
     private int type; //1-admin,2-normal

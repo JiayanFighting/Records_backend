@@ -88,7 +88,7 @@ public class ReportController {
 //            return res;
 //        }
         if (reportService.save(report) > 0) {
-            reportService.saveDraft(report);
+//            reportService.saveDraft(report);
             int id = report.getId();
             res.put("id", id);
             return res;

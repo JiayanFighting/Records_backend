@@ -8,10 +8,7 @@ import com.demo.records.utils.Graph;
 import com.demo.records.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +49,7 @@ public class LoginController {
 
                 System.out.println(userDO.toString());
                 Result res = new Result();
-                res.put("userId",userDO.getId());
+                res.put("id",userDO.getId());
                 res.put("username",userDO.getUsername());
                 res.put("email",userDO.getEmail());
                 res.put("type",userDO.getType());
@@ -64,7 +61,21 @@ public class LoginController {
         }catch (Exception e){
             this.logout();
             System.out.println(e.getMessage());
-            return Result.error("no user");
+            return Result.error("用户不存在！");
+        }
+    }
+
+    @PostMapping("/register")
+    public Result register(@RequestBody UserDO user) throws Throwable {
+        try{
+            if (loginService.register(user) > 0){
+                return Result.ok();
+            }else {
+                return Result.error("用户已存在");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return Result.error(e.getMessage());
         }
     }
 

@@ -39,6 +39,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public int register(UserDO user) {
+        return userMapper.register(user);
+    }
+
+    @Override
     public void saveUser(UserDO user) {
         userMapper.saveUser(user);
     }

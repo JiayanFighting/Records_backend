@@ -101,7 +101,7 @@ public class NoteController {
         System.out.println("/note/submit:note="+note.toString());
         Result res = new Result();
         if (noteService.save(note) > 0) {
-            noteService.saveDraft(note);
+//            noteService.saveDraft(note);
             int id = note.getId();
             res.put("id", id);
             return res;
@@ -112,7 +112,7 @@ public class NoteController {
     @ResponseBody
     @PostMapping(path="/saveDraft")
     public Result saveDraft(@RequestBody NoteDO note){
-        noteService.saveDraft(note);
+//        noteService.saveDraft(note);
         return Result.ok();
     }
 
@@ -121,7 +121,7 @@ public class NoteController {
     @PostMapping("/update")
     public Result updateNote(@RequestBody NoteDO note){
         if (noteService.update(note) > 0){
-            noteService.saveDraft(note);
+//            noteService.saveDraft(note);
             return Result.ok();
         }
         return Result.error();

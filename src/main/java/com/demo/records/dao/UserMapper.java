@@ -20,18 +20,22 @@ public interface UserMapper{
     @Update("update "+tableName+" set `avatar` = #{avatar}  where `id`=#{userId}")
     int updateUserAvatar(@Param("userId") int userId, @Param("avatar") String avatar);
 
+    @Insert("INSERT INTO "+tableName+" (email,username,password) VALUES (#{email},#{username},#{password}) ")
+    int register(UserDO user);
+
+    @Select("SELECT "+allColumn+" FROM "+tableName+" WHERE email = #{email}")
+    @Results(id="userMap", value={
+            @Result(column="status_code", property="statusCode")
+    })
+    UserDO findByEmail(@Param("email") String email);
+
+    // ====================================================================
 
     @Insert("INSERT INTO users (email,username) VALUES (#{email},#{username}) ON DUPLICATE KEY UPDATE status_code= "+UserDO.USER_STATUS_NORMAL +"  and type = "+UserDO.USER_TYPE_NORMAL)
     int saveUser(UserDO user);
 
     @Select("SELECT  `email`,`username`  FROM users Where name = #{username}")
     UserDO findByName(@Param("username") String name);
-
-    @Select("SELECT `email`,`username`,`avatar`, `type`,`status_code` FROM users WHERE email = #{email}")
-    @Results(id="userMap", value={
-            @Result(column="status_code", property="statusCode")
-    })
-    UserDO findByEmail(@Param("email") String email);
 
     @Select("<script>" +
             " select `username`, `email`,`avatar` from users "+
