@@ -121,6 +121,18 @@ public class NoteController {
         return Result.error();
     }
 
+    @ResponseBody
+    @PostMapping("/delete")
+    public Result deleteNote(@RequestBody Map<String,Object> params){
+        System.out.println(params.get("id"));
+        int id = (Integer) params.get("id");
+        System.out.println("id="+id);
+        if (noteService.delete(id) > 0){
+            return Result.ok();
+        }
+        return Result.error();
+    }
+
     @PostMapping("/content")
     public Result getReportContent(@RequestBody Map<String,Object> params){
         ReportDO report = reportService.getDraft(params);

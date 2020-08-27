@@ -41,8 +41,8 @@ public interface NoteMapper {
             + "values (#{userId},#{directory}, #{type}, #{tags}, #{title},#{content},#{cover},#{thumbUp},#{star})")
     int save(NoteDO note);
 
-    @Update("update "+tableName +"set `status` = "+statusDeleted+" ")
-    int delete(int id);
+    @Update("update "+tableName +"set `status` = "+statusDeleted+" where id=#{id} ")
+    int delete(@Param("id") int id);
 
     @Update("<script>"+
             "update "+tableName +
