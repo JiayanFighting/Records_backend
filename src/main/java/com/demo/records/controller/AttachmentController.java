@@ -71,6 +71,34 @@ public class AttachmentController {
     }
 
     @ResponseBody
+    @PostMapping("/photo/upload/cover")
+    public Result uploadCover(@RequestParam("photo") MultipartFile photo, @RequestParam("userId") int userId) throws IOException {
+        System.out.println("/photo/upload/cover");
+//        String root = PhotoStore.PHOTO_STORE_URL;
+        String root = PHOTO_STORE_URL;
+        String coverName = String.valueOf(System.currentTimeMillis())+new Random().nextInt(9)+".jpg";
+//        String userEmail = getLoginUser();
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        String fileDic = root+userId+"/"+date;
+        System.out.println(fileDic);
+        File userDir = new File(fileDic);
+        if (!userDir.exists() && !userDir.mkdirs()) {
+            return Result.error();
+        }
+        try {
+            File savedFile = new File(fileDic,coverName);
+            photo.transferTo(savedFile);
+            String savePath = "/"+userId+"/"+date+"/"+ coverName;
+            System.out.println(savePath);
+            Result res = new Result();
+            res.put("url",savePath);
+            return res;
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @ResponseBody
     @PostMapping("/photo/upload/avatar")
     public Result uploadAvatar(@RequestParam("photo") MultipartFile photo,@RequestParam("userId") int userId) throws IOException {
         String root = PHOTO_STORE_URL;
