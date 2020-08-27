@@ -72,7 +72,7 @@ public class AttachmentController {
 
     @ResponseBody
     @PostMapping("/photo/upload/cover")
-    public Result uploadCover(@RequestParam("photo") MultipartFile photo, @RequestParam("userId") int userId) throws IOException {
+    public Result uploadCover(@RequestParam("photo") MultipartFile photo, @RequestParam("userId") String userId) throws IOException {
         System.out.println("/photo/upload/cover");
 //        String root = PhotoStore.PHOTO_STORE_URL;
         String root = PHOTO_STORE_URL;
