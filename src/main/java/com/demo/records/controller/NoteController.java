@@ -1,5 +1,6 @@
 package com.demo.records.controller;
 
+import com.demo.records.vo.NoteVO;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
 import com.microsoft.graph.models.extensions.EmailAddress;
 import com.microsoft.graph.models.extensions.ItemBody;
@@ -84,6 +85,11 @@ public class NoteController {
         params.put("userId",userId);
         System.out.println("/note/list:userId="+userId);
         List<NoteDO> list = noteService.list(params);
+        List<NoteVO> flist = new ArrayList<>();
+//        for (NoteDO note:list){
+//            NoteVO nv =  new NoteVO(note);
+//            flist.add(nv);
+//        }
         Result res = new Result();
         res.put("list",list);
         return res;
@@ -124,6 +130,35 @@ public class NoteController {
     @ResponseBody
     @PostMapping("/delete")
     public Result deleteNote(@RequestBody Map<String,Object> params){
+        System.out.println(params.get("id"));
+        int id = (Integer) params.get("id");
+        System.out.println("id="+id);
+        if (noteService.delete(id) > 0){
+            return Result.ok();
+        }
+        return Result.error();
+    }
+
+    @ResponseBody
+    @RequestMapping("/tags")
+    public Result getTagList(String userId){
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId",userId);
+        System.out.println("/note/tags:userId="+userId);
+        List<String> list = noteService.getTags(params);
+        List<String> tags = new ArrayList<>();
+        for (String tt:list){
+            String[] tts = tt.split(";");
+            tags.addAll(Arrays.asList(tts));
+        }
+        Result res = new Result();
+        res.put("tags",tags);
+        return res;
+    }
+
+    @ResponseBody
+    @PostMapping("/star")
+    public Result starNote(@RequestBody Map<String,Object> params){
         System.out.println(params.get("id"));
         int id = (Integer) params.get("id");
         System.out.println("id="+id);

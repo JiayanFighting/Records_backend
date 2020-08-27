@@ -60,4 +60,32 @@ public interface NoteMapper {
             " from "+tableName +
             " where id = #{id} ")
     NoteDO getNoteById(int id);
+
+
+    @Select("<script>" +
+            "select tags " +
+            " from "+tableName+
+            "<where>" +
+            "<if test=\"userId != null and userId != ''\">"+ "and user_id = #{userId} " + "</if>" +
+            "<if test=\"directory != null and directory != ''\">"+ "and directory = #{directory} " + "</if>" +
+            "<if test=\"type != null and type != ''\">"+ "and type = #{type} " + "</if>" +
+            "<if test=\"tags != null and tags != ''\">"+ "and tags = #{tags} " + "</if>" +
+            "<if test=\"beginTime != null and beginTime != ''\">"+ "and update_time &gt;= #{beginTime} " + "</if>" +
+            "<if test=\"endTime != null and endTime != ''\">"+ "and update_time &lt;= #{endTime}" + "</if>" +
+            " and status = "+statusNormal+" "+
+            "</where>"+
+            "</script>")
+    List<String> getTags(Map<String, Object> map);
+
+    @Update("<script>"+
+            "update "+tableName +
+            "<set>" +
+            "<if test=\"type != null\">`type` = #{type}, </if>" +
+            "<if test=\"tags != null\">`tags` = #{tags}, </if>" +
+            "<if test=\"title != null\">`title` = #{title}, </if>" +
+            "<if test=\"content != null\">`content` = #{content}, </if>" +
+            "</set>" +
+            "where `id` = #{id} and `status` = "+statusNormal+" "+
+            "</script>")
+    int starNote(NoteDO note);
 }

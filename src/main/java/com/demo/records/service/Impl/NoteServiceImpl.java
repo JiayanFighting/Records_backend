@@ -28,6 +28,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public List<String> getTags(Map<String, Object> map) {
+        return noteMapper.getTags(map);
+    }
+
+    @Override
     public int save(NoteDO note) {
         return noteMapper.save(note);
     }
