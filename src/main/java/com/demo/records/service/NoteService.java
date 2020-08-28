@@ -10,6 +10,8 @@ public interface NoteService {
 
     List<NoteDO> list(Map<String, Object> map);
 
+    List<NoteDO> getListByDirectory(int userId, int directory);
+
     List<String> getTags(Map<String, Object> map);
 
     int save(NoteDO note);

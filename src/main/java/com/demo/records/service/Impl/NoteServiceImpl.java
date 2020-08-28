@@ -28,6 +28,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public List<NoteDO> getListByDirectory(int userId, int directory) {
+        return noteMapper.getListByDirectory(userId,directory);
+    }
+
+    @Override
     public List<String> getTags(Map<String, Object> map) {
         return noteMapper.getTags(map);
     }

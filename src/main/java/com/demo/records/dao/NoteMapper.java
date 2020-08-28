@@ -36,6 +36,13 @@ public interface NoteMapper {
     })
     List<NoteDO> list(Map<String, Object> map);
 
+    @Select("select `id`,`directory`,`title`" +
+            " from "+tableName+
+            " where `user_id` = #{userId} and `directory` = #{directory} and status = "+statusNormal+" "+
+            " order by create_time desc ")
+    @ResultMap("noteMap")
+    List<NoteDO> getListByDirectory(@Param("userId") int userId,@Param("directory") int directory);
+
     @Options(useGeneratedKeys=true, keyProperty = "id", keyColumn = "id")
     @Insert("INSERT INTO notes (`user_id`,`directory`, `type`, `tags`,`title`, `content`,`cover`,`thumbUp`,`star`)"
             + "values (#{userId},#{directory}, #{type}, #{tags}, #{title},#{content},#{cover},#{thumbUp},#{star})")

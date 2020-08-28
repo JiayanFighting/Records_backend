@@ -32,36 +32,23 @@ public class DirectoryController {
 
     @RequestMapping("/all")
     public Result getAllDirectory(){
+        int userId = 1;
 //        List<DirectoryDO> list= directoryService.getAll(userId);
         int rootId = 0;
-//        DirectoryVO vo = new DirectoryVO();
-//        List<DirectoryVO> clvo = getDirectoryVO(rootId);
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("directory",rootId);
-//        List<NoteDO> notes = noteService.list(map);
-//        vo.setNotes(new ArrayList<>(notes));
-//        vo.setChildren(new ArrayList<>(clvo));
-//        DirectoryDO ddo = new DirectoryDO();
-//        vo.setDirectoryDO(ddo);
-//        vo.setTitle("顶级目录");
-//        vo.setKey("0");
-//        vo.setIsLeaf(false);
         DirectoryVOO voo = new DirectoryVOO();
         // 当前目录的基本信息
         voo.setKey("0");
         voo.setTitle("顶级目录");
         voo.setIsLeaf(false);
         // 子目录
-        List<DirectoryVOO> ldvoo = getDirectoryVOO(rootId);
+        List<DirectoryVOO> ldvoo = getDirectoryVOO(userId,rootId);
         // 当前目录下的博客
-        Map<String, Object> map = new HashMap<>();
-        map.put("directory",rootId);
-        List<NoteDO> notes = noteService.list(map);
+        List<NoteDO> notes = noteService.getListByDirectory(1,rootId);
         // 变成子目录，但是 isLeaf为true
         for (NoteDO note:notes){
             DirectoryVOO vooo = new DirectoryVOO();
-            vooo.setTitle(note.getTitle().substring(0,Math.min(note.getTitle().length(),10)));
-            vooo.setKey(note.getId()+note.getTitle().substring(0,Math.min(note.getTitle().length(),3)));
+            vooo.setTitle(note.getTitle());
+            vooo.setKey(note.getId()+note.getTitle().substring(0,Math.min(note.getTitle().length(),5)));
             vooo.setIsLeaf(true);
             vooo.setNoteId(note.getId());
             ldvoo.add(vooo);
@@ -72,7 +59,23 @@ public class DirectoryController {
         return res;
     }
 
-    public List<DirectoryVOO> getDirectoryVOO(int fatherId){
+    @RequestMapping("/allOnly")
+    public Result getAllDirectoryWithoutNote(){
+        int rootId = 0;
+        DirectoryVOO voo = new DirectoryVOO();
+        // 当前目录的基本信息
+        voo.setKey("0");
+        voo.setTitle("顶级目录");
+        voo.setIsLeaf(false);
+        // 子目录
+        List<DirectoryVOO> ldvoo = getDirectoryVOOWithOutNote(rootId);
+        voo.setChildren(new ArrayList<>(ldvoo));
+        Result res = new Result();
+        res.put("all",voo);
+        return res;
+    }
+
+    public List<DirectoryVOO> getDirectoryVOOWithOutNote(int fatherId){
         List<DirectoryVOO> vooList = new ArrayList<>();
         List<DirectoryDO> children =  directoryService.getChildren(fatherId);
         Map<String, Object> map = new HashMap<>();
@@ -83,16 +86,36 @@ public class DirectoryController {
             voo.setTitle(ddo.getName());
             voo.setIsLeaf(false);
             // 子目录
-            List<DirectoryVOO> ldvoo = getDirectoryVOO(ddo.getId());
+            List<DirectoryVOO> ldvoo = getDirectoryVOOWithOutNote(ddo.getId());
+            voo.setChildren(new ArrayList<>(ldvoo));
+            vooList.add(voo);
+        }
+        return vooList;
+    }
+
+    public List<DirectoryVOO> getDirectoryVOO(int userId,int fatherId){
+        List<DirectoryVOO> vooList = new ArrayList<>();
+        List<DirectoryDO> children =  directoryService.getChildren(fatherId);
+        Map<String, Object> map = new HashMap<>();
+        for (DirectoryDO ddo:children){
+            DirectoryVOO voo = new DirectoryVOO();
+            // 当前目录的基本信息
+            voo.setKey(String.valueOf(ddo.getId()));
+            voo.setTitle(ddo.getName());
+            voo.setIsLeaf(false);
+            // 子目录
+            List<DirectoryVOO> ldvoo = getDirectoryVOO(userId,ddo.getId());
             // 当前目录下的博客
             map.put("directory",ddo.getId());
-            List<NoteDO> notes = noteService.list(map);
+            List<NoteDO> notes = noteService.getListByDirectory(userId,ddo.getId());
+//            List<NoteDO> notes = noteService.list(map);
             // 变成子目录，但是 isLeaf为true
             for (NoteDO note:notes){
                 DirectoryVOO vooo = new DirectoryVOO();
-                vooo.setTitle(note.getTitle().substring(0,10));
-                vooo.setKey(note.getId()+note.getTitle().substring(0,3));
+                vooo.setTitle(note.getTitle());
+                vooo.setKey(note.getId()+note.getTitle().substring(0,Math.min(note.getTitle().length(),5)));
                 vooo.setIsLeaf(true);
+                vooo.setNoteId(note.getId());
                 ldvoo.add(vooo);
             }
             voo.setChildren(new ArrayList<>(ldvoo));
