@@ -47,6 +47,12 @@ public class UserController {
     @RequestMapping("/visitInfo")
     public Result getUserInfoForVisit(String email) {
         UserDO userDO = userService.findByEmail(email);
+        if (userDO == null){
+            Result res = new Result();
+            res.put("code",404);
+            res.put("msg","用户不存在");
+            return res;
+        }
         if (false){
             return Result.error("用户没有开放主页！");
         }
