@@ -96,6 +96,18 @@ public class NoteController {
     }
 
     @ResponseBody
+    @RequestMapping("/id")
+    public Result getNoteById(int id){
+        NoteDO note = noteService.getNoteById(id);
+        if (note == null) {
+            return Result.error("笔记不存在");
+        }
+        Result res = new Result();
+        res.put("note",note);
+        return res;
+    }
+
+    @ResponseBody
     @PostMapping(path="/submit")
     public Result submitNote(@RequestBody NoteDO note){
         System.out.println("/note/submit:note="+note.toString());

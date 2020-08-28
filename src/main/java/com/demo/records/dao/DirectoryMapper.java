@@ -17,6 +17,11 @@ public interface DirectoryMapper {
 
     @Select("select " + allColumn + " from " + tableName +
             " where user_id = #{userId} and status = " + statusNormal)
+    @Results(id = "directoryMap", value = {
+            @Result(column = "user_id", property = "userId"),
+            @Result(column = "father_id", property = "fatherId"),
+            @Result(column = "create_time", property = "createTime"),
+    })
     List<DirectoryDO> getAll(int userId);
 
 
@@ -25,15 +30,12 @@ public interface DirectoryMapper {
             "( select father_id from " + tableName +
             " where " + primaryKey + "= #{id} )" +
             "and status = " + statusNormal)
-    @Results(id = "directoryMap", value = {
-            @Result(column = "user_id", property = "userId"),
-            @Result(column = "father_id", property = "fatherId"),
-            @Result(column = "create_time", property = "createTime"),
-    })
+    @ResultMap("directoryMap")
     DirectoryDO getFather(@Param("id") int id);
 
     @Select("select " + allColumn + " from " + tableName +
             " where father_id = #{id} and status = " + statusNormal)
+    @ResultMap("directoryMap")
     List<DirectoryDO> getChildren(int id);
 
 

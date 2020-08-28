@@ -1,20 +1,16 @@
 package com.demo.records.controller;
 
 import com.demo.records.domain.DirectoryDO;
-import com.demo.records.service.DirectoryService;
-import com.demo.records.service.TeamRelationshipService;
-import com.demo.records.service.TeamService;
-import com.demo.records.service.TeamSprintService;
+import com.demo.records.domain.NoteDO;
+import com.demo.records.service.*;
 import com.demo.records.utils.Result;
 import com.demo.records.vo.DirectoryVO;
+import com.demo.records.vo.DirectoryVOO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 @Slf4j
 @RestController
@@ -22,6 +18,8 @@ import java.util.Queue;
 public class DirectoryController {
     @Autowired
     DirectoryService directoryService;
+    @Autowired
+    NoteService noteService;
 
     @Autowired
     TeamService teamService;
@@ -33,20 +31,97 @@ public class DirectoryController {
     TeamSprintService teamSprintService;
 
     @RequestMapping("/all")
-    public Result getAllDirectory(int userId){
-        List<DirectoryDO> list= directoryService.getAll(userId);
-        DirectoryVO vo = new DirectoryVO();
+    public Result getAllDirectory(){
+//        List<DirectoryDO> list= directoryService.getAll(userId);
         int rootId = 0;
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(0);
-        while (!queue.isEmpty()){
-            int fatherId  =  queue.poll();
-            List<DirectoryDO> children =  directoryService.getChildren(fatherId);
+//        DirectoryVO vo = new DirectoryVO();
+//        List<DirectoryVO> clvo = getDirectoryVO(rootId);
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("directory",rootId);
+//        List<NoteDO> notes = noteService.list(map);
+//        vo.setNotes(new ArrayList<>(notes));
+//        vo.setChildren(new ArrayList<>(clvo));
+//        DirectoryDO ddo = new DirectoryDO();
+//        vo.setDirectoryDO(ddo);
+//        vo.setTitle("顶级目录");
+//        vo.setKey("0");
+//        vo.setIsLeaf(false);
+        DirectoryVOO voo = new DirectoryVOO();
+        // 当前目录的基本信息
+        voo.setKey("0");
+        voo.setTitle("顶级目录");
+        voo.setIsLeaf(false);
+        // 子目录
+        List<DirectoryVOO> ldvoo = getDirectoryVOO(rootId);
+        // 当前目录下的博客
+        Map<String, Object> map = new HashMap<>();
+        map.put("directory",rootId);
+        List<NoteDO> notes = noteService.list(map);
+        // 变成子目录，但是 isLeaf为true
+        for (NoteDO note:notes){
+            DirectoryVOO vooo = new DirectoryVOO();
+            vooo.setTitle(note.getTitle().substring(0,Math.min(note.getTitle().length(),10)));
+            vooo.setKey(note.getId()+note.getTitle().substring(0,Math.min(note.getTitle().length(),3)));
+            vooo.setIsLeaf(true);
+            vooo.setNoteId(note.getId());
+            ldvoo.add(vooo);
         }
-
+        voo.setChildren(new ArrayList<>(ldvoo));
         Result res = new Result();
-        res.put("all",list);
+        res.put("all",voo);
         return res;
+    }
+
+    public List<DirectoryVOO> getDirectoryVOO(int fatherId){
+        List<DirectoryVOO> vooList = new ArrayList<>();
+        List<DirectoryDO> children =  directoryService.getChildren(fatherId);
+        Map<String, Object> map = new HashMap<>();
+        for (DirectoryDO ddo:children){
+            DirectoryVOO voo = new DirectoryVOO();
+            // 当前目录的基本信息
+            voo.setKey(String.valueOf(ddo.getId()));
+            voo.setTitle(ddo.getName());
+            voo.setIsLeaf(false);
+            // 子目录
+            List<DirectoryVOO> ldvoo = getDirectoryVOO(ddo.getId());
+            // 当前目录下的博客
+            map.put("directory",ddo.getId());
+            List<NoteDO> notes = noteService.list(map);
+            // 变成子目录，但是 isLeaf为true
+            for (NoteDO note:notes){
+                DirectoryVOO vooo = new DirectoryVOO();
+                vooo.setTitle(note.getTitle().substring(0,10));
+                vooo.setKey(note.getId()+note.getTitle().substring(0,3));
+                vooo.setIsLeaf(true);
+                ldvoo.add(vooo);
+            }
+            voo.setChildren(new ArrayList<>(ldvoo));
+            vooList.add(voo);
+        }
+        return vooList;
+    }
+
+    public List<DirectoryVO> getDirectoryVO(int fatherId){
+        List<DirectoryVO> voList = new ArrayList<>();
+        List<DirectoryDO> children =  directoryService.getChildren(fatherId);
+        Map<String, Object> map = new HashMap<>();
+        for (DirectoryDO ddo:children){
+            DirectoryVO vo = new DirectoryVO();
+            List<DirectoryVO> clvo = getDirectoryVO(ddo.getId());
+            map.put("directory",ddo.getId());
+            List<NoteDO> notes = noteService.list(map);
+            vo.setChildren(new ArrayList<>(clvo));
+            vo.setDirectoryDO(ddo);
+            vo.setNotes(new ArrayList<>(notes));
+            vo.setExtral();
+            if (notes.size()==0&& clvo.size()==0){
+                vo.setIsLeaf(true);
+            }else{
+                vo.setIsLeaf(false);
+            }
+            voList.add(vo);
+        }
+        return voList;
     }
 
     @RequestMapping("/find")

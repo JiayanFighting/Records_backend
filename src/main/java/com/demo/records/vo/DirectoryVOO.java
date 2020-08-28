@@ -11,13 +11,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DirectoryVO {
+public class DirectoryVOO {
     private String title;
     private String key;
     private boolean isLeaf;
-    private DirectoryDO directoryDO;
-    private List<DirectoryVO> children;
-    private List<NoteDO> notes;
+    private int noteId;
+    private List<DirectoryVOO> children;
 
     public void setIsLeaf(boolean isLeaf){
         this.isLeaf =  isLeaf;
@@ -25,9 +24,5 @@ public class DirectoryVO {
 
     public boolean getIsLeaf(){
         return this.isLeaf;
-    }
-    public void setExtral(){
-        this.title = directoryDO.getName();
-        this.key = String.valueOf(directoryDO.getId());
     }
 }
