@@ -98,6 +98,7 @@ public class NoteController {
     @ResponseBody
     @RequestMapping("/id")
     public Result getNoteById(int id){
+//        new HashMap<Integer,Integer>(2).put();
         NoteDO note = noteService.getNoteById(id);
         if (note == null) {
             return Result.error("笔记不存在");
