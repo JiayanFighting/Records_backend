@@ -25,7 +25,11 @@ public class ToolController {
         String[] lineList = content.split("\n");
         for (String s:lineList){
             sb.append(s);
-            sb.append(" ");
+            if (s.charAt(s.length()-1) == '.') {
+                sb.append("\n");
+            }else{
+                sb.append(" ");
+            }
         }
         Result res = new Result();
         String translatedContent = translate(sb.toString());
@@ -42,14 +46,18 @@ public class ToolController {
         JSONObject jsonObject = JSONObject.parseObject(json);
 
         if (jsonObject.containsKey("trans_result")){
-            Object o = jsonObject.get("trans_result");
-                if (o instanceof JSONArray){
-                Object jo = ((JSONArray) o).get(0);
-                if (jo instanceof JSONObject){
-                    String res = ((JSONObject) jo).getString("dst");
-                    System.out.println(res);
-                    return res;
+            Object jsonArray = jsonObject.get("trans_result");
+            if (jsonArray instanceof JSONArray){
+                Object[] objects = ((JSONArray) jsonArray).toArray();
+                StringBuilder sb = new StringBuilder();
+                for (Object item:objects) {
+                    if (item instanceof JSONObject){
+                        sb.append(((JSONObject) item).getString("dst"));
+                    }
+                    sb.append("\n");
                 }
+                return sb.toString();
+
             }
         }
         return "error";
