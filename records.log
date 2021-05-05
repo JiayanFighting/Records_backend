@@ -1,0 +1,340 @@
+nohup: ignoring input
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.3.RELEASE)
+
+2021-04-26 23:58:03.090  INFO 9590 --- [           main] com.demo.records.RecordsApplication      : Starting RecordsApplication v0.0.1-SNAPSHOT on jiayanserver with PID 9590 (/root/blog/Records_backend/target/records-0.0.1-SNAPSHOT.jar started by root in /root/blog/Records_backend)
+2021-04-26 23:58:03.096  INFO 9590 --- [           main] com.demo.records.RecordsApplication      : No active profile set, falling back to default profiles: default
+2021-04-26 23:58:05.251  INFO 9590 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-04-26 23:58:05.254  INFO 9590 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-04-26 23:58:05.333  INFO 9590 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 Redis repository interfaces.
+2021-04-26 23:58:06.609  INFO 9590 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.demo.records.config.RedisConfig$$EnhancerBySpringCGLIB$$64125272] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-26 23:58:07.570  INFO 9590 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-04-26 23:58:07.593  INFO 9590 --- [           main] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-8080"]
+2021-04-26 23:58:07.594  INFO 9590 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-26 23:58:07.594  INFO 9590 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-04-26 23:58:07.757  INFO 9590 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-26 23:58:07.758  INFO 9590 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4542 ms
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+2021-04-26 23:58:11.342  INFO 9590 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-26 23:58:11.676  INFO 9590 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-26 23:58:12.932  INFO 9590 --- [           main] o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-8080"]
+2021-04-26 23:58:13.113  INFO 9590 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-26 23:58:13.153  INFO 9590 --- [           main] com.demo.records.RecordsApplication      : Started RecordsApplication in 11.481 seconds (JVM running for 12.378)
+*******************************
+**SpringBoot Start Successful**
+*******************************
+2021-04-26 23:58:31.813  INFO 9590 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-26 23:58:31.813  INFO 9590 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-26 23:58:31.844  INFO 9590 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 31 ms
+2021-04-26 23:58:31.983  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=null,password=null}
+2021-04-26 23:58:32.047  INFO 9590 --- [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-26 23:58:32.051  WARN 9590 --- [nio-8080-exec-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-04-26 23:58:33.176  INFO 9590 --- [nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+/logout
+Your account has no permissions, please contact the administrator
+2021-04-26 23:59:13.886  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=null}
+/note/list:userId=null
+2021-04-27 00:38:57.154  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=null}
+/note/list:userId=null
+2021-04-27 00:45:10.485  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=JiayanFighting@qq.com,password=123456}
+UserDO(id=1, email=JiayanFighting@qq.com, password=123456, username=黄家晏, avatar=/1/avatars/15982805983005.jpg, type=1, statusCode=0)
+2021-04-27 00:45:11.665  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 00:45:11.692  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:45:27.704  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/tool/removeLine|method=GET|classMethod=removeLine|params={content=install lastest npm}
+install lastest npm
+{"from":"en","to":"zh","trans_result":[{"src":"install lastest npm","dst":"\u5b89\u88c5\u6700\u65b0\u7684npm"}]}
+2021-04-27 00:45:39.334  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:45:39.351  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 00:46:03.689  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:46:03.693  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 00:46:47.070  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:46:47.081  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 00:54:43.672  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 00:54:43.684  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:54:50.501  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 00:54:50.503  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 01:18:37.886  INFO 9590 --- [nio-8080-exec-3] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x000x00i0x010x000x00e0x030x03U0x1c0xa70xe4random1random2random3random40x000x000x0c0x00/0x000x0a0x000x130x0090x000x040x000xff0x010x000x0000x000x0d0x00,0x00*0x000x010x000x030x000x020x060x010x060x030x060x020x020x010x020x030x020x020x030x010x030x030x030x020x040x010x040x030x040x020x010x010x010x030x010x020x050x010x050x030x05...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-04-27 12:06:19.842  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=null}
+/note/list:userId=null
+2021-04-27 21:11:04.487  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 21:11:04.488  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-27 21:11:08.925  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-04-27 21:11:08.987  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-04-28 02:11:13.029  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=null,password=null}
+/logout
+Your account has no permissions, please contact the administrator
+2021-04-28 02:57:59.074  INFO 9590 --- [io-8080-exec-10] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-04-29 02:58:32.977  INFO 9590 --- [nio-8080-exec-7] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-04-29 19:20:30.116  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=null,password=null}
+/logout
+Your account has no permissions, please contact the administrator
+2021-04-30 06:55:36.170  INFO 9590 --- [nio-8080-exec-4] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-01 06:55:38.148  INFO 9590 --- [nio-8080-exec-8] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-02 00:39:56.511  INFO 9590 --- [nio-8080-exec-1] com.demo.records.aad.AuthFilter          : Throwable exc :Request processing failed; nested exception is org.springframework.http.InvalidMediaTypeException: Invalid mime type "/": does not contain subtype after '/'
+2021-05-02 06:58:33.450  INFO 9590 --- [nio-8080-exec-8] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-03 06:51:49.215  INFO 9590 --- [nio-8080-exec-7] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [phtml,php3"; ccoo=userface=&user%5Fblack=&nickname=&userclass=&jf=&username=; xxoo=userstate=; ASPSESSIONIDAQDCSADT=COEPENGDFEMABFCOAPBLIFFH; kbtm23=402; lookjob=N; favjob=N; useridjob=N; lg=cn; ASPSESSIONIDCSDATASR=BMAPKAFDGIBPCLNCHMJBMHPJ; mysid=9e88c0cac5781278be8f04b7b372475c; fikker-ad5r-QB92=mKCIWOKMSBKOcOmRs4QlaZCta8QNCOK4; IPLOC=CN3100; site_r=clearTimeout%28AT%29%3BresponsiveImage%3Dfunction%28el%29%7Bel%3Del%3Fel%3A%27body%27%3B%24%28%27img.responsiveImage%27%2C%24%28el%29%29.responsiveImage%28%29%3B%7D%3B; 96519_lastvisit=0%091619993212%09%2Fbbs%2Findex.php%2Fimage%2Flv%2Fwap%2Fimage%2Fthewei-pw1%2Findex%2Fread.php%3Ftid-16238.html; 96519_lastpos=index; 96519_ol_offset=17363; acc=be5ada51-7474-42c2-881b-d3bc7e2aa4b7; FS_1098203041=1619993378; nouid=608f232b60e622822; pvStime=D807D0F5A6EC9B40595A; pvTimes=D8; fxpartner_uv=1; __pid__=129B3DF480A14B; __puno__=54C164A2D5FC11F456EAACB914E9E6F1; youdianinfo_historycn=15779; session_prefix=dabbc324010ffc9abde350f83e36ed84; spath7960=005; ngx_id=wKgIgmCPJkgAGw7ACNEwAg==; IPISP=ISP; fikker-GBup-EDAV=sFADLRQTu8KVYLJP3REKAM5Ka4E2Y6Qt; ASPSESSIONIDAASABDBS=LJGJDDJDEFFMOAOMCPCBKPOJ; .ASPXANONYMOUS=h_DXSzR21wEkAAAAYzNkYWJiNGEtYzljMC00Y2M2LWJmNDgtODA5M2UxMjNhYWFlM41LsXftw7ijkCf5bwfklwEtmc9ChO7zogf7r11qZBc1; sMfi_2132_saltkey=Uss79d03; sMfi_2132_lastvisit=1619991073; sMfi_2132_sid=v0C5Z1; sMfi_2132_lastact=1619994673%09music.php%09play; real_ipd=183.192.179.16; PNmw_2132_saltkey=oDa03xKx; PNmw_2132_lastvisit=1619991163; PNmw_2132_sid=s4N368; PNmw_2132_lastact=1619994763%09forum.php%09viewthread; SNUID=A13D74482E28EC4D5F8BA0562E7648D0; waf_cookie=ac6de263-b02d-4015f5ae5200104cc6ce4bd29c85e85b5f43; DvForum+8%2E3%5Fwww%2Essdvd%2Enet=StatUserID=11615223024; ASPSESSIONIDAAQBRBDQ=PJFPAJCDFEDMPFCJCEIIHBBA; ASPSESSIONIDSADBDSBB=GNEPKCFDKNPNPIAELEHFCHGM; 6f48f_c_stamp=1619995325; 6f48f_lastvisit=0%091619995325%09%2Fsimple%2Findex.php%3Ft1017256.html; 6f48f_lastpos=other; 6f48f_ol_offset=3008; 6f48f_ipstate=1619995325; ASPSESSIONIDSQCBBBBS=OABCECJDBEMJIEPBNMHGIEHJ; hnyHkiub_2132_lastvisit=1619992104; hnyHkiub_2132_sessionid=1688926838] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2021-05-03 07:03:39.535  INFO 9590 --- [nio-8080-exec-7] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-04 07:05:57.175  INFO 9590 --- [nio-8080-exec-2] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00P0x050xb2VL0...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-04 16:07:51.275  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=null,password=null}
+/logout
+Your account has no permissions, please contact the administrator
+2021-05-04 19:09:39.082  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=null,password=null}
+/logout
+Your account has no permissions, please contact the administrator
+2021-05-05 12:55:18.961  INFO 9590 --- [nio-8080-exec-1] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x050x01...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+
+2021-05-05 14:53:27.113  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=null}
+/note/list:userId=null
+2021-05-05 15:32:59.630  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=JiayanFighting@qq.com,password=123456}
+UserDO(id=1, email=JiayanFighting@qq.com, password=123456, username=黄家晏, avatar=/1/avatars/15982805983005.jpg, type=1, statusCode=0)
+2021-05-05 15:32:59.784  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:32:59.854  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 15:33:03.292  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 15:33:03.298  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:33:09.161  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:33:09.171  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 15:33:58.808  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:33:58.810  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 15:37:49.879  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=JiayanFighting@qq.com,password=123456}
+UserDO(id=1, email=JiayanFighting@qq.com, password=123456, username=黄家晏, avatar=/1/avatars/15982805983005.jpg, type=1, statusCode=0)
+2021-05-05 15:37:50.016  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:37:50.019  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 15:38:01.771  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/tool/removeLine|method=GET|classMethod=removeLine|params={content=this is a test}
+this is a test
+{"from":"en","to":"zh","trans_result":[{"src":"this is a test","dst":"\u8fd9\u662f\u4e00\u4e2a\u6d4b\u8bd5"}]}
+2021-05-05 15:38:16.907  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/tool/removeLine|method=GET|classMethod=removeLine|params={content=this is a test 
+for you}
+this is a test 
+for you
+{"from":"en","to":"zh","trans_result":[{"src":"this is a test  for you","dst":"\u8fd9\u662f\u5bf9\u4f60\u7684\u8003\u9a8c"}]}
+2021-05-05 15:51:16.806  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 15:51:16.811  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:08:39.117  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=JiayanFighting@qq.com,password=123456}
+UserDO(id=1, email=JiayanFighting@qq.com, password=123456, username=黄家晏, avatar=/1/avatars/15982805983005.jpg, type=1, statusCode=0)
+2021-05-05 16:08:39.266  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:08:39.329  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:15:51.331  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:15:51.336  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:16:01.068  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:16:01.074  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:24:49.372  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:24:49.378  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:24:58.388  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:24:58.393  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:25:01.803  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:25:11.136  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:25:11.150  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:25:15.958  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:25:15.962  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:25:41.368  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:25:41.369  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:25:51.766  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:25:51.767  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:26:17.606  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:26:17.608  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:26:38.715  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:26:39.279  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:26:39.282  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:30:52.140  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:30:52.143  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:30:55.576  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:30:55.579  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:31:19.549  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:31:19.556  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:32:22.763  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/login|method=GET|classMethod=login|params={email=JiayanFighting@qq.com,password=123456}
+UserDO(id=1, email=JiayanFighting@qq.com, password=123456, username=黄家晏, avatar=/1/avatars/15982805983005.jpg, type=1, statusCode=0)
+2021-05-05 16:32:22.897  INFO 9590 --- [nio-8080-exec-6] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:32:22.899  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:36:02.640  INFO 9590 --- [nio-8080-exec-4] com.demo.records.utils.LogAspect         : operator=|url=/photo/upload|method=POST|classMethod=upload|params={photo=org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@4afca0e5,userId=1}
+save a photo
+2021-05-05 16:36:41.475  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/photo/upload|method=POST|classMethod=upload|params={photo=org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@24a2dca8,userId=1}
+save a photo
+2021-05-05 16:37:44.776  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/directory/allOnly|method=GET|classMethod=getAllDirectoryWithoutNote|params={}
+2021-05-05 16:37:59.581  INFO 9590 --- [nio-8080-exec-3] com.demo.records.utils.LogAspect         : operator=|url=/photo/upload/cover|method=POST|classMethod=uploadCover|params={photo=org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@54c3e615,userId=1}
+/photo/upload/cover
+/root/ProjectFiles/Records/photos/1/20210505
+/1/20210505/16202038795811.jpg
+2021-05-05 16:38:08.025  INFO 9590 --- [nio-8080-exec-9] com.demo.records.utils.LogAspect         : operator=|url=/note/submit|method=POST|classMethod=submitNote|params={note=NoteDO(id=0, userId=1, directory=1, type=技术, tags=, title=新笔记, content=<img src="http://119.29.60.226/1/20210505/CF4D6E77A62448C5BC24B2DA49077096.jpg" alt="image uploaded" width="50%"/> 
+<img src="http://119.29.60.226/1/20210505/6BEE03DA7B7D44DCA32D609660184662.jpg" alt="image uploaded" width="50%"/> 
+## 这是新笔记
+### 我想测试一下图片
+不知道好不好使
+成都, cover=http://119.29.60.226/1/20210505/16202038795811.jpg, thumbUp=0, star=0, createTime=null, updateTime=null, status=0)}
+/note/submit:note=NoteDO(id=0, userId=1, directory=1, type=技术, tags=, title=新笔记, content=<img src="http://119.29.60.226/1/20210505/CF4D6E77A62448C5BC24B2DA49077096.jpg" alt="image uploaded" width="50%"/> 
+<img src="http://119.29.60.226/1/20210505/6BEE03DA7B7D44DCA32D609660184662.jpg" alt="image uploaded" width="50%"/> 
+## 这是新笔记
+### 我想测试一下图片
+不知道好不好使
+成都, cover=http://119.29.60.226/1/20210505/16202038795811.jpg, thumbUp=0, star=0, createTime=null, updateTime=null, status=0)
+2021-05-05 16:38:09.927  INFO 9590 --- [nio-8080-exec-8] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:38:10.031  INFO 9590 --- [nio-8080-exec-7] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:38:13.686  INFO 9590 --- [io-8080-exec-10] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:38:13.701  INFO 9590 --- [nio-8080-exec-1] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
+2021-05-05 16:40:17.213  INFO 9590 --- [nio-8080-exec-5] com.demo.records.utils.LogAspect         : operator=|url=/directory/all|method=GET|classMethod=getAllDirectory|params={}
+2021-05-05 16:40:17.215  INFO 9590 --- [nio-8080-exec-2] com.demo.records.utils.LogAspect         : operator=|url=/note/list|method=GET|classMethod=getNotesList|params={userId=1}
+/note/list:userId=1
