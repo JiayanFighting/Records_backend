@@ -28,7 +28,7 @@ import java.util.Random;
 @RestController
 public class AttachmentController {
 
-    public static final String PHOTO_STORE_URL = "/root/ProjectFiles/Records/photos/";
+    public static final String PHOTO_STORE_URL = "/root/blog/photos/";
 
     @Autowired
     private HttpServletRequest httpServletRequest;

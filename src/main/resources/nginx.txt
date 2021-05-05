@@ -74,7 +74,7 @@ server {
 
             proxy_store on;
 
-            # proxy_temp_path     /root/ProjectFiles/Records/photos;#图片访问路径
+            # proxy_temp_path     /root/blog/photos;#图片访问路径
 
             proxy_redirect     off;
 
