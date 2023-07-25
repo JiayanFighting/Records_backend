@@ -15,33 +15,34 @@ import java.util.Map;
 @RestController
 @RequestMapping("/template")
 public class TemplateController {
+
     @Autowired
     private TemplateService templateService;
 
     //get all templates in the database
     @ResponseBody
-    @RequestMapping("/getAllTemplates")
-    public Result getTemplates() {
+    @PostMapping(path = "/getAllTemplates")
+    public Result getTemplates(@RequestBody TemplateDO templateDO) {
         Result res = new Result();
         List<TemplateDO> list = templateService.getAllTemplates();
-        res.put("templates",list);
+        res.put("templates", list);
         return res;
     }
 
     //get all templates name with a specific team
     @ResponseBody
     @RequestMapping("/getTemplatesInTeam")
-    public Result getTemplates(int teamId){
+    public Result getTemplates(int teamId) {
 //        log.info("/template/getTemplatesInTeam:teamId="+teamId);
         Result res = new Result();
         List<TemplateDO> list = templateService.getTemplatesInTeam(teamId);
-        res.put("templates",list);
+        res.put("templates", list);
         return res;
     }
 
     //create a new template for a team
     @ResponseBody
-    @PostMapping(path="/create")
+    @PostMapping(path = "/create")
     public Result createTemplate(@RequestBody TemplateDO templateDO) {
 //        log.info("/template/create:templateDO="+templateDO.toString());
         if (templateService.createTemplate(templateDO) > 0) {
@@ -52,7 +53,7 @@ public class TemplateController {
 
     //update an existing template
     @ResponseBody
-    @PostMapping(path="/update")
+    @PostMapping(path = "/update")
     public Result updateTemplate(@RequestBody TemplateDO templateDO) {
 //        log.info("/template/update:templateDO="+templateDO.toString());
         int updated = templateService.updateTemplate(templateDO);
@@ -65,7 +66,7 @@ public class TemplateController {
     //delete an existing template
     @ResponseBody
     @PostMapping("/delete")
-    public Result deleteTemplate(@RequestBody Map<String,String> params) {
+    public Result deleteTemplate(@RequestBody Map<String, String> params) {
         int id = Integer.parseInt(params.get("id"));
 //        log.info("/template/delete:id="+id);
         int deleted = templateService.deleteTemplate(id);
@@ -78,22 +79,22 @@ public class TemplateController {
     //return detail info of a specific template
     @ResponseBody
     @RequestMapping("/selectTemplate")
-    public Result selectTemplate(@RequestBody int id){
+    public Result selectTemplate(@RequestBody int id) {
 //        log.info("/template/selectTemplate:id="+id);
         Result res = new Result();
         TemplateDO temp = templateService.findById(id);
-        res.put("template",temp);
+        res.put("template", temp);
         return res;
     }
 
     // search template by teamId and type
     @ResponseBody
-    @RequestMapping("/search")
-    public Result searchTemplates(int teamId,String type){
+    @PostMapping("/search")
+    public Result searchTemplates(@RequestBody TemplateDO templateDO) {
 //        log.info("/template/search:teamId="+teamId+",type="+type);
         Result res = new Result();
-        List<TemplateDO> list = templateService.findByType(teamId,type);
-        res.put("templates",list);
+        List<TemplateDO> list = templateService.findByType(templateDO.getTeamId(), templateDO.getType());
+        res.put("templates", list);
         return res;
     }
 }

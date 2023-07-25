@@ -10,49 +10,51 @@ import java.util.List;
 @Mapper
 public interface TemplateMapper {
 
-    @Select("SELECT `id`,`team_id`,`report_type`,`theme` ,`content`, `creator_email`, `create_time`,`update_time`,`status_code` FROM templates WHERE status_code = 0")
-    @Results(id="templateMap", value={
-            @Result(column="team_id",property = "teamId"),
-            @Result(column="report_type",property = "type"),
-            @Result(column="creator_email",property = "creatorEmail"),
-            @Result(column="create_time",property = "createTime"),
-            @Result(column="update_time",property = "updateTime"),
-            @Result(column="status_code",property = "statusCode"),
+    @Select("SELECT `id`,`type`,`title` ,`content`, `creator`, `create_time`,`update_time`,`status` FROM templates WHERE status = 1")
+    @Results(id = "templateMap", value = {
+            @Result(column = "team_id", property = "teamId"),
+            @Result(column = "type", property = "type"),
+            @Result(column = "creator", property = "creator"),
+            @Result(column = "create_time", property = "createTime"),
+            @Result(column = "update_time", property = "updateTime"),
+            @Result(column = "status", property = "status"),
     })
     List<TemplateDO> getAllTemplates();
 
-    @Select("SELECT `id`,`team_id`,`report_type`,`theme` ,`content`, `creator_email`, `create_time`,`update_time`,`status_code` FROM templates WHERE team_id = #{teamId} AND status_code = 0")
+    @Select("SELECT `id`,`team_id`,`report_type`,`title` ,`content`, `creator`, `create_time`,`update_time`,`status`"
+            + " FROM templates "
+            + " WHERE team_id = #{teamId} AND status = 1")
     @ResultMap("templateMap")
     List<TemplateDO> getTemplatesByTeamId(@Param("teamId") int teamId);
 
 
-    @Insert("INSERT IGNORE INTO templates (`team_id`, `report_type`, `theme`, `content`, `creator_email`)"
-                             +       "values (#{teamId}, #{type}, #{theme}, #{content}, #{creatorEmail})")
+    @Insert("INSERT IGNORE INTO templates (`type`, `title`, `content`) values (#{type}, #{title}, #{content})")
     int save(TemplateDO templateDO);
 
-    @Select("SELECT `id`,`team_id`,`report_type`,`theme` ,`content`, `creator_email`, `create_time`,`update_time`,`status_code` FROM templates WHERE id = #{id}")
+    @Select("SELECT `id`,`team_id`,`type`,`title` ,`content`, `creator`, `create_time`,`update_time`,`status` FROM templates WHERE id = #{id}")
     @ResultMap("templateMap")
     TemplateDO findById(@Param("id") int id);
 
-    @Select("SELECT `id`,`team_id`,`report_type`,`theme` ,`content`, `creator_email`, `create_time`,`update_time`,`status_code` FROM templates WHERE team_id = #{teamId} and report_type = #{type} and status_code = 0")
+    @Select("SELECT `id`,`team_id`,`type`,`title` ,`content`, `creator`, `create_time`,`update_time`,`status` "
+            + "FROM templates "
+            + "WHERE team_id = #{teamId} and type = #{type} and status = 1")
     @ResultMap("templateMap")
     List<TemplateDO> findByType(@Param("teamId") int teamId, @Param("type") String type);
 
-    @Update("<script>"+
+    @Update("<script>" +
             "update templates" +
             "<set>" +
-            "<if test=\"type != null\">`report_type` = #{type}, </if>" +
-            "<if test=\"creatorEmail != null\">`creator_email` = #{creatorEmail}, </if>" +
+            "<if test=\"type != null\">`type` = #{type}, </if>" +
+            "<if test=\"title != null\">`title` = #{title}, </if>" +
             "<if test=\"content != null\">`content` = #{content}, </if>" +
-            "<if test=\"theme != null\">`theme` = #{theme}, </if>" +
+            "<if test=\"creator != null\">`creator` = #{creator}, </if>" +
             "</set>" +
-            "where id = #{id}"+
+            "where id = #{id}" +
             "</script>")
     int update(TemplateDO templateDO);
 
-    @Update("update templates set status_code = 1 where id = #{id}")
+    @Update("update templates set status = 0 where id = #{id}")
     int delete(int id);
-
 
 
 }

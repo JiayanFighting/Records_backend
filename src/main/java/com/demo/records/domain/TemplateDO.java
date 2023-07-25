@@ -8,13 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TemplateDO {
-    private int id;
-    private int teamId;
+
+    private Integer id;
     private String type;
-    private String theme;
+    private String title;
     private String content;
-    private String creatorEmail;
+    private Integer teamId;
+    private String creator;
+    private Integer status;
     private String createTime;
     private String updateTime;
-    private int statusCode;
+
 }
