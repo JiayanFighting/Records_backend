@@ -2,8 +2,12 @@ package com.demo.records.service.Impl;
 
 import com.demo.records.dao.NoteMapper;
 import com.demo.records.domain.*;
+import com.demo.records.domain.req.NoteQueryReq;
 import com.demo.records.service.NoteService;
 import com.demo.records.utils.RedisUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +16,7 @@ import java.util.Map;
 
 @Service
 public class NoteServiceImpl implements NoteService {
+
     public static final String REDIS_DRAFT_NOTES_KEY_PREFIX = "draft:note";
     public static final int REDIS_EXPIRED_TIME = 86400;
 
@@ -28,8 +33,13 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public List<NoteDO> query(NoteQueryReq req) {
+        return noteMapper.query(req);
+    }
+
+    @Override
     public List<NoteDO> getListByDirectory(int userId, int directory) {
-        return noteMapper.getListByDirectory(userId,directory);
+        return noteMapper.getListByDirectory(userId, directory);
     }
 
     @Override
@@ -59,9 +69,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public int saveDraft(NoteDO note) {
-        String key = REDIS_DRAFT_NOTES_KEY_PREFIX+":"+note.getUserId();
-        redisUtil.hset(key,"title",note.getTitle());
-        redisUtil.hset(key,"content",note.getContent());
+        String key = REDIS_DRAFT_NOTES_KEY_PREFIX + ":" + note.getUserId();
+        redisUtil.hset(key, "title", note.getTitle());
+        redisUtil.hset(key, "content", note.getContent());
         return 0;
     }
 
@@ -73,6 +83,21 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public int deleteDraft(Map<String, Object> params) {
         return 0;
+    }
+
+    @Override
+    public List<String> getAllTypes() {
+        return noteMapper.getAllTypes();
+    }
+
+    @Override
+    public List<String> getAllTags() {
+        List<String> tagStrs = noteMapper.getAllTags();
+        List<String> tags = new ArrayList<>();
+        for (String tag : tagStrs) {
+            tags.addAll(Arrays.stream(tag.split(",")).collect(Collectors.toList()));
+        }
+        return tags.stream().filter(x -> !x.equals("")).distinct().collect(Collectors.toList());
     }
 
 

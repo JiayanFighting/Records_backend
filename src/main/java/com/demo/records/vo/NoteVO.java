@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoteVO {
+
     private int id;
     private int userId;
     private int directory;
@@ -27,7 +28,7 @@ public class NoteVO {
     private String updateTime;
     private int status;
 
-    public NoteVO(NoteDO note){
+    public NoteVO(NoteDO note) {
         this.id = note.getId();
         this.userId = note.getUserId();
         this.directory = note.getDirectory();
@@ -40,6 +41,6 @@ public class NoteVO {
         this.updateTime = note.getUpdateTime();
         this.createTime = note.getCreateTime();
         this.status = note.getStatus();
-        this.tags = note.getTags().split(";");
+        this.tags = note.getTags().split(",");
     }
 }

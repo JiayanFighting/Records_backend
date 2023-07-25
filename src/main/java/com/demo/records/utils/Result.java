@@ -3,11 +3,24 @@ package com.demo.records.utils;
 import com.alibaba.fastjson.JSONObject;
 
 public class Result extends JSONObject {
+
     private static final long serialVersionUID = 1L;
 
     public Result() {
         put("code", 0);
         put("msg", "Success");
+    }
+
+    public Result(Object value) {
+        put("code", 0);
+        put("msg", "Success");
+        put("list", value);
+    }
+
+    public Result(String key, Object value) {
+        put("code", 0);
+        put("msg", "Success");
+        put(key, value);
     }
 
     public static Result ok(String msg) {
@@ -41,7 +54,7 @@ public class Result extends JSONObject {
     }
 
     public Result put(int key, Object value) {
-        super.put(String.valueOf(key),value);
+        super.put(String.valueOf(key), value);
         return this;
     }
 

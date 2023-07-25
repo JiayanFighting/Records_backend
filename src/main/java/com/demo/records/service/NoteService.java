@@ -3,12 +3,15 @@ package com.demo.records.service;
 import com.demo.records.domain.NoteDO;
 import com.demo.records.domain.ReportDO;
 
+import com.demo.records.domain.req.NoteQueryReq;
 import java.util.List;
 import java.util.Map;
 
 public interface NoteService {
 
     List<NoteDO> list(Map<String, Object> map);
+
+    List<NoteDO> query(NoteQueryReq req);
 
     List<NoteDO> getListByDirectory(int userId, int directory);
 
@@ -27,4 +30,8 @@ public interface NoteService {
     ReportDO getDraft(Map<String, Object> params);
 
     int deleteDraft(Map<String, Object> params);
+
+    List<String> getAllTypes();
+
+    List<String> getAllTags();
 }

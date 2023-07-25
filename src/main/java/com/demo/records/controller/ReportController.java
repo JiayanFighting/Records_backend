@@ -243,7 +243,7 @@ public class ReportController {
         String ccList = params.containsKey("cc") && params.get("cc") != null ? params.get("cc").toString() : "";
         //add cc recipients
         LinkedList<Recipient> ccRecipientsList = new LinkedList<Recipient>();
-        String[] ccs = ccList.split(";");
+        String[] ccs = ccList.split(",");
         for (String cc : ccs) {
             if (cc == null || cc.length() == 0) continue;
             Recipient ccRecipient = new Recipient();
